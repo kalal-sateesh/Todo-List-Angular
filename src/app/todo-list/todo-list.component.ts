@@ -56,11 +56,11 @@ export class TodoListComponent {
 
   addTask(){
     if(this.editIndex !== null){
-      this.tasks[this.editIndex-1].title = this.newTask
+      this.tasks[this.editIndex].title = this.newTask
       this.newTask = ""
       this.editIndex=null
     }else{
-      this.tasks.push({
+      this.tasks.unshift({
         id:this.tasks.length+1,
         title:this.newTask,
         checked:this.checked

@@ -12,14 +12,14 @@
     <div class="list-container">
       <div
         class="todo"
-        *ngFor="let ele of searchedTask"
+        *ngFor="let ele of searchedTask let i = index"
         [ngClass]="{ checked: ele.checked }"
       >
         <div class="title">{{ ele.title }}</div>
         <div class="edit-btn-div">
           <button
             class="btn-edit"
-            (click)="editTask(ele.title, ele.id)"
+            (click)="editTask(ele.title, i)"
             [disabled]="disableButton()"
           >
             EDIT
