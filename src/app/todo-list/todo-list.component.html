@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="input-container">
+    <h1>Todo List</h1>
+    <div class="input">
+      <input placeholder="Add/Edit Todo..." [(ngModel)]="newTask" />
+      <button *ngIf="editIndex === null" (click)="addTask()">ADD</button>
+      <button *ngIf="editIndex !== null" (click)="addTask()">SAVE</button>
+    </div>
+    <div class="search">
+      <input placeholder="Search Todo..." [(ngModel)]="serchTask" />
+    </div>
+    <div class="list-container">
+      <div
+        class="todo"
+        *ngFor="let ele of searchedTask"
+        [ngClass]="{ checked: ele.checked }"
+      >
+        <div class="title">{{ ele.title }}</div>
+        <div class="edit-btn-div">
+          <button
+            class="btn-edit"
+            (click)="editTask(ele.title, ele.id)"
+            [disabled]="disableButton()"
+          >
+            EDIT
+          </button>
+        </div>
+        <div class="checkbox-div">
+          <input type="checkbox" [(ngModel)]="ele.checked" />
+        </div>
+        <div class="delete-btn-div">
+          <button class="btn-Delete" (click)="deleteTask(ele.id)" [disabled]="disableButton()">
+            DELETE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
